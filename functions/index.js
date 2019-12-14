@@ -41,7 +41,7 @@ const getSubject = async (req, res) => {
   })
 }
 
-const getToDetailSubject = async (req, res) => {
+const getSomeSubject = async (req, res) => {
   const body = req.body
   let subjectRef = await db.collection(body.student).doc(body.codeSubject).get()
   let dataSubject = subjectRef.data()
@@ -80,7 +80,7 @@ const createSubject = async (req, res) => {
   }
 }
 
-const testsss = async (req, res) => {
+const deleteSubject = async (req, res) => {
   const body = req.body
   await db.collection(body.student).doc(body.codeSubject).delete()
 }
@@ -88,7 +88,7 @@ const testsss = async (req, res) => {
 
 app.get('/', hello)
 app.post('/getSubject', getSubject)
-app.post('/getToDetailSubject', getToDetailSubject)
+app.post('/getSomeSubject', getSomeSubject)
 app.post('/createSubject', createSubject)
-app.delete('/testsss', testsss)
+app.delete('/deleteSubject', deleteSubject)
 exports.backendAPI = functions.https.onRequest(app)
