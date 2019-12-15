@@ -24,7 +24,7 @@ const hello = async (req,res) => {
   })
 }
 
-const getSubject = async (req, res) => {
+const getSubject = async (req, res) => { // function get รายวิชาแบบทั้งหมด
   const body = req.body
   let dataAll = []
   let dataID = []
@@ -41,7 +41,7 @@ const getSubject = async (req, res) => {
   })
 }
 
-const getSomeSubject = async (req, res) => {
+const getSomeSubject = async (req, res) => { // function get รายวิชาแบบเลือก
   const body = req.body
   let subjectRef = await db.collection(body.student).doc(body.codeSubject).get()
   let dataSubject = subjectRef.data()
