@@ -12,10 +12,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://backend-qvy.firebaseio.com'
+  apiKey: 'AIzaSyBZ9EGAX2tbRP6iehgE10k1KrlTiJ9FNqg',
+  authDomain: 'backend-qvy.firebaseapp.com',
+  databaseURL: 'https://backend-qvy.firebaseio.com',
+  storageBucket: 'backend-qvy.appspot.com'
 });
+
 const dbRealtime = admin.database()
 const db = admin.firestore()
+const storage = admin.storage()
 
 const hello = async (req,res) => {
   res.send({
@@ -65,7 +70,8 @@ const createSubject = async (req, res) => {
       imageTeacher: body.imageTeacher,
       nameSubject: body.nameSubject,
       note: body.note,
-      teacher: body.teacher
+      teacher: body.teacher,
+      nameImgTeacher: body.nameImgTeacher 
     }
     await db.collection(body.student).doc(body.codeSubject).set(data)
     res.send({
