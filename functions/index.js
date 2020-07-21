@@ -20,7 +20,6 @@ admin.initializeApp({
 
 const dbRealtime = admin.database()
 const db = admin.firestore()
-const storage = admin.storage()
 
 const hello = async (req,res) => {
   res.send({
